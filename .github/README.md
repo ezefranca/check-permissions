@@ -1,5 +1,9 @@
 # check-permissions [![Swift](https://github.com/ezefranca/check-permissions/actions/workflows/swift.yml/badge.svg)](https://github.com/ezefranca/check-permissions/actions/workflows/swift.yml)
 
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fezefranca%2Fcheck-permissions%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/ezefranca/check-permissions)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fezefranca%2Fcheck-permissions%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/ezefranca/check-permissions)
+
 ## Overview
 
 The **Check Permissions** CLI tool is a Swift-based command line application designed to scan `Info.plist` files in a specified directory and report the permissions requested by each file. This tool is particularly useful for developers working with iOS projects using CocoaPods, as it helps ensure that the necessary permissions are properly declared in the `Pods` directory.
