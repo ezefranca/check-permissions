@@ -6,15 +6,26 @@ import PackageDescription
 let package = Package(
     name: "check-permissions",
     platforms: [
-        .macOS(.v11),
+        .iOS(.v15),
+        .macOS(.v12),
+        .watchOS(.v9),
+        .tvOS(.v15),
+        .visionOS(.v1)
     ],
-    dependencies: [],
+    products: [
+        .executable(name: "check-permissions-cli", targets: ["check-permissions-cli"]),
+        .library(name: "check-permissions", targets: ["check-permissions"]),
+    ],
     targets: [
         .executableTarget(
+            name: "check-permissions-cli",
+            dependencies: ["check-permissions"],
+            path: "Sources/check-permissions-cli"),
+        .target(
             name: "check-permissions",
-            dependencies: []),
+            path: "Sources/check-permissions"),
         .testTarget(
             name: "check-permissionsTests",
             dependencies: ["check-permissions"]),
     ]
-) 
+)

@@ -13,6 +13,6 @@ swift build -c release
 
 # Move the executable to /usr/local/bin
 echo "Installing the executable..."
-sudo mv .build/release/check-permissions /usr/local/bin/
+sudo mv .build/release/check-permissions-cli /usr/local/bin/
 
-echo "Installation complete. You can now use the check-permissions command."
+echo "Installation complete. You can now use the check-permissions-cli command."
