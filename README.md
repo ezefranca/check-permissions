@@ -57,7 +57,7 @@ check-permissions --help
 
 ### Sample Output
 
-```
+```sh
 Scanning directory: /Users/yourusername/Developer/YourProject/Pods
 Found 3 Info.plist files.
 File: /Users/yourusername/Developer/YourProject/Pods/ModuleA/Info.plist
@@ -79,32 +79,3 @@ We welcome contributions to enhance the functionality of this tool. Please follo
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-### `install.sh` Script
-
-For reference, here is the `install.sh` script:
-
-```sh
-#!/bin/bash
-
-# Check if Swift is installed
-if ! command -v swift &> /dev/null
-then
-    echo "Swift is not installed. Please install Swift to proceed."
-    exit 1
-fi
-
-# Build the package
-echo "Building the package..."
-swift build -c release
-
-# Move the executable to /usr/local/bin
-echo "Installing the executable..."
-sudo mv .build/release/check-permissions /usr/local/bin/
-
-echo "Installation complete. You can now use the check-permissions command."
-```
-
-This `install.sh` script ensures that the tool is built and installed properly, making the `check-permissions` command available globally on your system.
