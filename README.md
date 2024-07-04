@@ -57,7 +57,7 @@ check-permissions --help
 
 ### Sample Output
 
-```
+```sh
 Scanning directory: /Users/yourusername/Developer/YourProject/Pods
 Found 3 Info.plist files.
 File: /Users/yourusername/Developer/YourProject/Pods/ModuleA/Info.plist
