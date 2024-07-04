@@ -1,5 +1,5 @@
 
-# Check Permissions CLI Tool
+# check-permissions [![Swift](https://github.com/ezefranca/check-permissions/actions/workflows/swift.yml/badge.svg)](https://github.com/ezefranca/check-permissions/actions/workflows/swift.yml)
 
 ## Overview
 
