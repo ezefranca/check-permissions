@@ -10,7 +10,7 @@ public extension String {
 public class ColoredConsoleString {
     var string: String
     
-    public enum ColorSelectors: String {
+    public enum color: String {
         case red = "\u{001B}[0;31m"
         case green = "\u{001B}[0;32m"
         case yellow = "\u{001B}[0;33m"
@@ -25,30 +25,30 @@ public class ColoredConsoleString {
     }
     
     public var red: String {
-        wrappedString(color: .red, string)
+        wrappedString(color: color.red, string)
     }
     
     public var green: String {
-        wrappedString(color: .green, string)
+        wrappedString(color: color.green, string)
     }
     
     public var yellow: String {
-        wrappedString(color: .yellow, string)
+        wrappedString(color: color.yellow, string)
     }
     
     public var blue: String {
-        wrappedString(color: .blue, string)
+        wrappedString(color: color.blue, string)
     }
     
     public var magenta: String {
-        wrappedString(color: .magenta, string)
+        wrappedString(color: color.magenta, string)
     }
     
     public var cyan: String {
-        wrappedString(color: .cyan, string)
+        wrappedString(color: color.cyan, string)
     }
     
-    private func wrappedString(color: ColorSelectors, _ string: String) -> String {
-        return "\(color.rawValue)\(string)\(ColorSelectors.reset.rawValue)"
+    private func wrappedString(color: color, _ string: String) -> String {
+        return "\(color.rawValue)\(string)\(ColoredConsoleString.color.reset.rawValue)"
     }
 }

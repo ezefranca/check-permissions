@@ -22,7 +22,37 @@ public class PermissionChecker {
         "NSPhotoLibraryAddUsageDescription",
         "NSRemindersUsageDescription",
         "NSSiriUsageDescription",
-        "NSSpeechRecognitionUsageDescription"
+        "NSSpeechRecognitionUsageDescription",
+        "GCSupportedGameControllers",
+        "GCSupportsMultipleMicroGamepads",
+        "GKGameCenterBadgingDisabled",
+        "GKShowChallengeBanners",
+        "NETestAppMapping",
+        "NSAppTransportSecurity",
+        "NSDockTilePlugIn",
+        "NSHumanReadableCopyright",
+        "NSJavaNeeded",
+        "NSJavaPath",
+        "NSJavaRoot",
+        "NSMainNibFile",
+        "NSPersistentStoreTypeKey",
+        "NSPrefPaneIconFile",
+        "NSPrefPaneIconLabel",
+        "NSPrincipalClass",
+        "NSServices",
+        "NSSupportsAutomaticTermination",
+        "NSSupportsPurgeableLocalStorage",
+        "NSSupportsSuddenTermination",
+        "NSUbiquitousContainer",
+        "NSUbiquitousContainerIsDocumentScopePublic",
+        "NSUbiquitousContainerName",
+        "NSUbiquitousContainerSupportedFolderLevels",
+        "NSUbiquitousDisplaySet",
+        "NSUserActivityTypes",
+        "NSUserNotificationAlertStyle",
+        "NSVideoSubscriberAccountUsageDescription",
+        "UTExportedTypeDeclarations",
+        "UTImportedTypeDeclarations"
     ]
     
     public func findPlistFiles(in directory: URL) -> [URL] {
@@ -77,6 +107,9 @@ public class PermissionChecker {
     
     @discardableResult
     public func printReport(for directoryURL: URL) -> [String: [String]] {
+        let plistFiles = findPlistFiles(in: directoryURL)
+        print("Found \(plistFiles.count) Info.plist files.".consoleColor.cyan)  // Display the number of Info.plist files found
+
         let report = generateReport(for: directoryURL)
         
         if report.isEmpty {
