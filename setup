@@ -13,6 +13,6 @@ make build
 
 # Install the package
 echo "Installing the package..."
-sudo make install_bin
+make install
 
 echo "Installation complete. You can now use the check-permissions command."

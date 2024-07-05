@@ -8,8 +8,7 @@ class CheckPermissions < Formula
     depends_on "swift" => :build
   
     def install
-      system "make", "build"
-      system "make", "PREFIX=#{prefix}", "install_bin"
+      bin.install "check-permissions/.build/arm64-apple-macosx/release/check-permissions"
     end
   
     test do

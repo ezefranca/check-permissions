@@ -3,9 +3,9 @@ INSTALL_NAME = check-permissions
 
 build:
 	swift package update
-	swift build -c release -Xswiftc
+	swift build -c release
 
-install_bin:
+install: build
 	mkdir -p $(PREFIX)/bin
 	mv .build/release/check-permissions-cli .build/release/$(INSTALL_NAME)
 	install .build/release/$(INSTALL_NAME) $(PREFIX)/bin
