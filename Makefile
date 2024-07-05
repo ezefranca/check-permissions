@@ -1,9 +1,9 @@
 PREFIX?=/usr/local
-INSTALL_NAME = check-permissions-cli
+INSTALL_NAME = check-permissions
 
 build:
 	swift package update
-	swift build -c release
+	swift build -c release -Xswiftc -static-stdlib
 
 install_bin:
 	mkdir -p $(PREFIX)/bin
