@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if Swift is installed
+if ! command -v swift &> /dev/null
+then
+    echo "Swift is not installed. Please install Swift to proceed."
+    exit 1
+fi
+
+# Build the package
+echo "Building the package..."
+make build
+
+# Install the package
+echo "Installing the package..."
+sudo make install_bin
+
+echo "Installation complete. You can now use the check-permissions command."

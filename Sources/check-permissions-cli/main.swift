@@ -9,7 +9,7 @@ func printHelp() {
       --path <path>    Specify the path to the Pods directory to scan for Info.plist files.
       --output <file>  Specify the file to output the results to. (default is console output)
       --help           Display this help message.
-    """.consoleColor.blue)
+    """.consoleColor.cyan)
 }
 
 func writeReportToFile(report: [String: [String]], filePath: String) {
@@ -31,13 +31,15 @@ func writeReportToFile(report: [String: [String]], filePath: String) {
 func main() {
     let arguments = CommandLine.arguments
     
-    guard arguments.contains("--path") else {
-        print("Invalid arguments. Use --help to see usage.".consoleColor.red)
+    if arguments.isEmpty || arguments.contains("--h") ||
+        arguments.contains("--help") ||
+        arguments.count <= 1 {
+        printHelp()
         return
     }
     
-    if arguments.contains("--help") {
-        printHelp()
+    guard arguments.contains("--path") else {
+        print("Invalid arguments. Use --help to see usage.".consoleColor.red)
         return
     }
     
