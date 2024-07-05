@@ -42,6 +42,7 @@ The installation script will compile the tool and install it to `/usr/local/bin`
 ### Command-Line Options
 
 - `--path <path>`: Specify the path to the `Pods` directory. This is a required argument.
+- `--output <file>`  Specify the file to output the results to. (default is console output)
 - `--help`: Display the help message.
 
 ### Example Usage
@@ -50,6 +51,12 @@ To scan a `Pods` directory for `Info.plist` files and report the permissions:
 
 ```sh
 check-permissions-cli --path /Users/yourusername/Developer/YourProject/Pods
+```
+
+To output to a report log file:
+
+```sh
+check-permissions-cli --path /Users/yourusername/Developer/YourProject/Pods --output report
 ```
 
 To display the help message:
@@ -68,7 +75,6 @@ File: /Users/yourusername/Developer/YourProject/Pods/ModuleA/Info.plist
  - NSLocationWhenInUseUsageDescription
 File: /Users/yourusername/Developer/YourProject/Pods/ModuleB/Info.plist
  - NSMicrophoneUsageDescription
-No permissions found in any Info.plist files.
 ```
 
 ## Using as a Package

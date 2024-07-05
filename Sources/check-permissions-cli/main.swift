@@ -7,9 +7,25 @@ func printHelp() {
 
     Options:
       --path <path>    Specify the path to the Pods directory to scan for Info.plist files.
-      --output <file>  Specify the file to output the results to.
+      --output <file>  Specify the file to output the results to. (default is console output)
       --help           Display this help message.
     """.consoleColor.blue)
+}
+
+func writeReportToFile(report: [String: [String]], filePath: String) {
+    do {
+        let logContent = report.map { plistPath, permissions in
+            """
+            File: \(plistPath)
+            \(permissions.map { " - \($0)" }.joined(separator: "\n"))
+            """
+        }.joined(separator: "\n\n")
+        
+        try logContent.write(toFile: filePath, atomically: true, encoding: .utf8)
+        print("Output written to \(filePath)".consoleColor.green)
+    } catch {
+        print("Failed to write output to file: \(error)".consoleColor.red)
+    }
 }
 
 func main() {
@@ -44,13 +60,7 @@ func main() {
     let report = checker.generateReport(for: directoryURL)
     
     if let outputFile = outputFile {
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: report, options: .prettyPrinted)
-            try jsonData.write(to: URL(fileURLWithPath: outputFile))
-            print("Output written to \(outputFile)".consoleColor.green)
-        } catch {
-            print("Failed to write output to file: \(error)".consoleColor.red)
-        }
+        writeReportToFile(report: report, filePath: outputFile)
     } else {
         if report.isEmpty {
             print("No permissions found in any Info.plist files.".consoleColor.yellow)
@@ -66,3 +76,4 @@ func main() {
 }
 
 main()
+
