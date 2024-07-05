@@ -3,7 +3,7 @@ INSTALL_NAME = check-permissions
 
 build:
 	swift package update
-	swift build -c release -Xswiftc -static-stdlib
+	swift build -c release -Xswiftc
 
 install_bin:
 	mkdir -p $(PREFIX)/bin
