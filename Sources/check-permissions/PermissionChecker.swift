@@ -2,6 +2,8 @@ import Foundation
 
 public class PermissionChecker {
     
+    public init() {}
+
     let permissionsKeys: [String] = [
         "NSAppleMusicUsageDescription",
         "NSBluetoothPeripheralUsageDescription",

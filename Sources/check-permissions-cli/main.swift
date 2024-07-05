@@ -1,4 +1,5 @@
 import Foundation
+import check_permissions
 
 func printHelp() {
     print("""

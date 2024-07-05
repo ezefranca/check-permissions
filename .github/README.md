@@ -1,5 +1,8 @@
+# check-permissions [![Swift](https://github.com/ezefranca/check-permissions/actions/workflows/swift.yml/badge.svg)](https://github.com/ezefranca/check-permissions/actions/workflows/swift.yml)
 
-# Check Permissions CLI Tool
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://github.com/apple/swift-package-manager)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fezefranca%2Fcheck-permissions%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/ezefranca/check-permissions)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fezefranca%2Fcheck-permissions%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/ezefranca/check-permissions)
 
 ## Overview
 
@@ -15,14 +18,14 @@ The **Check Permissions** CLI tool is a Swift-based command line application des
 
 ### Prerequisites
 
-- macOS 11.0 or later
+- macOS 12.0 or later
 - Swift 5.3 or later
 
 ### Steps
 
 1. **Clone the Repository**:
     ```sh
-    git clone <repository-url>
+    git clone https://github.com/ezefranca/check-permissions.git
     cd check-permissions
     ```
 
@@ -32,7 +35,7 @@ The **Check Permissions** CLI tool is a Swift-based command line application des
     ./install.sh
     ```
 
-The installation script will compile the tool and install it to `/usr/local/bin`, making it available globally as `check-permissions`.
+The installation script will compile the tool and install it to `/usr/local/bin`, making it available globally as `check-permissions-cli`.
 
 ## Usage
 
@@ -46,13 +49,13 @@ The installation script will compile the tool and install it to `/usr/local/bin`
 To scan a `Pods` directory for `Info.plist` files and report the permissions:
 
 ```sh
-check-permissions --path /Users/yourusername/Developer/YourProject/Pods
+check-permissions-cli --path /Users/yourusername/Developer/YourProject/Pods
 ```
 
 To display the help message:
 
 ```sh
-check-permissions --help
+check-permissions-cli --help
 ```
 
 ### Sample Output
@@ -66,6 +69,49 @@ File: /Users/yourusername/Developer/YourProject/Pods/ModuleA/Info.plist
 File: /Users/yourusername/Developer/YourProject/Pods/ModuleB/Info.plist
  - NSMicrophoneUsageDescription
 No permissions found in any Info.plist files.
+```
+
+## Using as a Package
+
+To use the **Check Permissions** package in your Swift project, add it as a dependency in your `Package.swift`:
+
+```swift
+// swift-tools-version:5.4
+import PackageDescription
+
+let package = Package(
+    name: "YourProject",
+    platforms: [
+        .iOS(.v15),
+        .macOS(.v12),
+        .watchOS(.v9),
+        .tvOS(.v15),
+        .visionOS(.v1)
+    ],
+    dependencies: [
+        .package(url: "https://github.com/ezefranca/check-permissions", from: "0.0.2"),
+    ],
+    targets: [
+        .target(
+            name: "YourProject",
+            dependencies: ["check-permissions"]),
+    ]
+)
+```
+
+Then import and use it in your code:
+
+```swift
+import check_permissions
+
+let checker = PermissionChecker()
+let report = checker.generateReport(for: URL(fileURLWithPath: "/path/to/Pods"))
+for (plistPath, permissions) in report {
+    print("File: \(plistPath)")
+    for permission in permissions {
+        print(" - \(permission)")
+    }
+}
 ```
 
 ## Contributing
