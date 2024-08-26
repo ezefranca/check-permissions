@@ -32,7 +32,7 @@ The **Check Permissions** CLI tool is a Swift-based command line application des
 2. **Run the Installation Script**:
     ```sh
     chmod +x install.sh
-    ./install.sh
+    ./setup.sh
     ```
 
 The installation script will compile the tool and install it to `/usr/local/bin`, making it available globally as `check-permissions-cli`.
