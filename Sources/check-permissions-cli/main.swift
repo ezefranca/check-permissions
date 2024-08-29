@@ -12,7 +12,7 @@ struct PermissionScan: ParsableCommand {
         PermissionScan helps you quickly identify the permissions declared in Info.plist files within your project.
         This is especially useful for ensuring compliance with App Store guidelines and improving transparency with users.
         """,
-        version: "1.0.0",
+        version: "0.0.5",
         shouldDisplay: true,
         helpNames: [.long, .short]
     )

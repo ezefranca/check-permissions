@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "permissions-scan-package",
+    name: "check-permissions",
     platforms: [
         .iOS(.v15),
         .macOS(.v12),
@@ -11,9 +11,9 @@ let package = Package(
         .visionOS(.v1)
     ],
     products: [
-        .executable(name: "permissions-scan", targets: ["permissions-scan"]),
-        .library(name: "permissions-scan-package", targets: ["permissions-scan-package"]),
-    ], 
+        .executable(name: "check-permissions-cli", targets: ["check-permissions-cli"]),
+        .library(name: "check-permissions", targets: ["check-permissions"]),
+    ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.5.0"),
         .package(url: "https://github.com/tuist/XcodeProj.git", from: "8.23.2"),
@@ -22,20 +22,20 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "permissions-scan",
+            name: "check-permissions-cli",
             dependencies: [
-                "permissions-scan-package",
+                "check-permissions",
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 "Rainbow",
                 "SwiftyTextTable"
             ],
-            path: "Sources/permissions-scan"),
+            path: "Sources/check-permissions-cli"),
         .target(
-            name: "permissions-scan-package",
-            path: "Sources/permissions-scan-package"),
+            name: "check-permissions",
+            path: "Sources/check-permissions"),
         .testTarget(
-            name: "permissions-scan-packageTests",
-            dependencies: ["permissions-scan-package"],
-            path: "Tests/permissions-scan-packageTests")
+            name: "check-permissions-packageTests",
+            dependencies: ["check-permissions"],
+            path: "Tests/check-permissions-packageTests")
     ]
 )
