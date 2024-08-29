@@ -100,7 +100,7 @@ public class PermissionChecker {
                     report[plistFile.path] = permissions
                 }
             } else {
-                print("Failed to parse \(plistFile.path)".consoleColor.red)
+                print("Failed to parse \(plistFile.path)")
             }
         }
         
@@ -110,17 +110,17 @@ public class PermissionChecker {
     @discardableResult
     public func printReport(for directoryURL: URL) -> [String: [String]] {
         let plistFiles = findPlistFiles(in: directoryURL)
-        print("Found \(plistFiles.count) Info.plist files.".consoleColor.cyan)  // Display the number of Info.plist files found
+        print("Found \(plistFiles.count) Info.plist files.")  // Display the number of Info.plist files found
 
         let report = generateReport(for: directoryURL)
         
         if report.isEmpty {
-            print("No permissions found in any Info.plist files.".consoleColor.yellow)
+            print("No permissions found in any Info.plist files.")
         } else {
             for (plistPath, permissions) in report {
-                print("File: \(plistPath)".consoleColor.cyan)
+                print("File: \(plistPath)")
                 for permission in permissions {
-                    print(" - \(permission)".consoleColor.green)
+                    print(" - \(permission)")
                 }
             }
         }

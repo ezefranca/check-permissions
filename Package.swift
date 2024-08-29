@@ -1,10 +1,8 @@
-// swift-tools-version: 5.9
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
+// swift-tools-version: 5.10
 import PackageDescription
 
 let package = Package(
-    name: "check-permissions",
+    name: "permissions-scan-package",
     platforms: [
         .iOS(.v15),
         .macOS(.v12),
@@ -13,19 +11,31 @@ let package = Package(
         .visionOS(.v1)
     ],
     products: [
-        .executable(name: "check-permissions-cli", targets: ["check-permissions-cli"]),
-        .library(name: "check-permissions", targets: ["check-permissions"]),
+        .executable(name: "permissions-scan", targets: ["permissions-scan"]),
+        .library(name: "permissions-scan-package", targets: ["permissions-scan-package"]),
+    ], 
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.5.0"),
+        .package(url: "https://github.com/tuist/XcodeProj.git", from: "8.23.2"),
+        .package(url: "https://github.com/onevcat/Rainbow", from: "4.0.1"),
+        .package(url: "https://github.com/scottrhoyt/SwiftyTextTable.git", from: "0.9.0"),
     ],
     targets: [
         .executableTarget(
-            name: "check-permissions-cli",
-            dependencies: ["check-permissions"],
-            path: "Sources/check-permissions-cli"),
+            name: "permissions-scan",
+            dependencies: [
+                "permissions-scan-package",
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                "Rainbow",
+                "SwiftyTextTable"
+            ],
+            path: "Sources/permissions-scan"), // Only main.swift should be here
         .target(
-            name: "check-permissions",
-            path: "Sources/check-permissions"),
+            name: "permissions-scan-package",
+            path: "Sources/permissions-scan-package"), // Only PermissionChecker.swift and other library files
         .testTarget(
-            name: "check-permissionsTests",
-            dependencies: ["check-permissions"]),
+            name: "permissions-scan-packageTests",
+            dependencies: ["permissions-scan-package"],
+            path: "Tests/check-permissionsTests") // Ensure test paths are correct
     ]
 )
