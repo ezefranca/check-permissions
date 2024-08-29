@@ -1,5 +1,5 @@
 import XCTest
-@testable import check_permissions
+@testable import permissions_scan_package
 
 final class PermissionCheckerTests: XCTestCase {
 
