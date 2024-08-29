@@ -2,7 +2,7 @@ import Foundation
 import ArgumentParser
 import Rainbow
 import SwiftyTextTable
-import permissions_scan_package
+import check_permissions
 
 struct PermissionScan: ParsableCommand {
     static let configuration = CommandConfiguration(
