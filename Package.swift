@@ -29,13 +29,13 @@ let package = Package(
                 "Rainbow",
                 "SwiftyTextTable"
             ],
-            path: "Sources/permissions-scan"), // Only main.swift should be here
+            path: "Sources/permissions-scan"),
         .target(
             name: "permissions-scan-package",
-            path: "Sources/permissions-scan-package"), // Only PermissionChecker.swift and other library files
+            path: "Sources/permissions-scan-package"),
         .testTarget(
             name: "permissions-scan-packageTests",
             dependencies: ["permissions-scan-package"],
-            path: "Tests/check-permissionsTests") // Ensure test paths are correct
+            path: "Tests/permissions-scan-packageTests")
     ]
 )
