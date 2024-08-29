@@ -7,7 +7,7 @@
 
 ## Overview
 
-The **permissions-scan** is a Swift-based command line application designed to scan `Info.plist` files in a specified directory and report the permissions requested by each file. This tool is particularly useful for developers working with iOS projects, as it helps ensure that the necessary permissions are properly declared in the project directory.
+The **check-permissions** is a Swift-based command line application designed to scan `Info.plist` files in a specified directory and report the permissions requested by each file. This tool is particularly useful for developers working with iOS projects, as it helps ensure that the necessary permissions are properly declared in the project directory.
 
 ## Features
 
@@ -36,7 +36,7 @@ The **permissions-scan** is a Swift-based command line application designed to s
     ./setup.sh
     ```
 
-The installation script will compile the tool and install it to `/usr/local/bin`, making it available globally as `permissions-scan`.
+The installation script will compile the tool and install it to `/usr/local/bin`, making it available globally as `check-permissions`.
 
 ## Usage
 
@@ -52,25 +52,25 @@ The installation script will compile the tool and install it to `/usr/local/bin`
 To scan a directory for `Info.plist` files and report the permissions:
 
 ```sh
-permissions-scan --path <directory-path-to-scan>
+check-permissions-cli --path <directory-path-to-scan>
 ```
 
 To output to a report log file:
 
 ```sh
-permissions-scan --path <directory-path-to-scan> --output report
+check-permissions-cli --path <directory-path-to-scan> --output report
 ```
 
 To enable verbose output:
 
 ```sh
-permissions-scan --path <directory-path-to-scan> --verbose
+check-permissions-cli --path <directory-path-to-scan> --verbose
 ```
 
 To display the help message:
 
 ```sh
-permissions-scan --help
+check-permissions-cli --help
 ```
 
 ### Sample Output
@@ -110,7 +110,7 @@ let package = Package(
     targets: [
         .target(
             name: "YourProject",
-            dependencies: ["permissions-scan-package"]),
+            dependencies: ["check-permissions-package"]),
     ]
 )
 ```
